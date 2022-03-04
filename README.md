@@ -1,3 +1,16 @@
+Here is sample code that is not by far ideal.
+
+Refactor code to production-grade quality.
+Find and describe bugs and issues.
+Add styling by your choice. (You can add styling library)
+Demonstrate connection to backend API.
+Add Todo detail page (add routing to app, use context api for state managment from fetch todos to render todos and detail)
+Todo component has defined shouldComponentUpdate lifecycle, but it can be done better, adjust it
+Optional: rewrite Todo component to FC (choose if you want, prepare explanation)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
