@@ -15,7 +15,7 @@ const TodoContainer = (props: any) => {
    (item: any) => item.userId).filter((userId: number, index: number,  arr: any) => userId !== arr[index + 1])
 
    const users1 = Array.from(new Set(props.todos.map((todo: any) => todo.userId)))
-   debugger
+   
   
  const getActiveTodos = (userId: number, id: number, title: string, completed: boolean) => props.activeUsers.some(
    (user: any, i: number) => user === userId) 
@@ -29,7 +29,7 @@ const TodoContainer = (props: any) => {
     : null
 
 
-    return users1.map((userId: any, i: number) =>  ( <> 
+    return users.map((userId: any, i: number) =>  ( <> 
       <UserContainer 
         key={userId} 
         userId={userId} 
