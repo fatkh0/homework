@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
 import React from "react";
 import { NavLink } from 'react-router-dom'
+import CheckCompletedContainer from "../../common/checkCompleted/CheckCompletedContainer";
 
 
 const useStyles = makeStyles({
@@ -23,24 +24,24 @@ const useStyles = makeStyles({
 	check: {
 		border: '1px solid #222',
 		borderRadius: '50%',
-		width: '10px',
-		height: '10px',
-		marginRight: '5px'
-		
+		width: '15px',
+		height: '15px',
+		marginRight: '5px',
+		cursor: 'pointer'
 	}
 })
 
 const Todo = (props: any) => {
 	const styles = useStyles()
 
-	const toggleCompleted = () => {
-		props.toggleCompleted(props.userId, props.id)
-	}
+
 
 	return (
 		<div className={styles.todoWrapper}>
-			<div onClick={toggleCompleted} 
-			className={`${styles.check} ${props.completed ? styles.completed : styles.notCompleted}`}></div>
+			<CheckCompletedContainer 
+				userId={props.userId} 
+				todoId={props.id} 
+				completed={props.completed} />
 				<NavLink 
 				className={navData => navData.isActive ? `${styles.link} ${styles.active}`: styles.link} 
 				to={`/details/user=${props.userId}/todo=${props.id}`} >

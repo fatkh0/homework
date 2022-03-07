@@ -1,10 +1,11 @@
+
 import React from "react";
+import ContentContainer from "./components/content/ContentContainer";
 
-import TodoContainer from './components/TodoContainer';
-
-function App() {
-  
-  return <TodoContainer />
+function App(props: any) {
+  return <ContentContainer />
 }
 
-export default App;
+
+
+export default App

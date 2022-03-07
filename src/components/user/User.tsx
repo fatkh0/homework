@@ -33,7 +33,7 @@ const User = (props: any) => {
   }
 
   const onUserClick = (e: any) => {
-    props.toggleContent(props.userId)
+    props.toggleTodos(props.userId)
   }
 
 

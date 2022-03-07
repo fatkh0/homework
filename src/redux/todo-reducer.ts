@@ -5,17 +5,20 @@ const UPDATE_TODOS = 'UPDATE_TODOS'
 const TOGGLE_ERROR = 'TOGGLE_ERROR'
 const TOGGLE_ACTIVE_USER = 'TOGGLE_ACTIVE_USER'
 const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED'
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 interface State {
   todos: object
   isError: boolean
   activeUsers: object
+  isFetching: boolean
 }
 
 const initialState: State = {
   todos: [],
   isError: false,
-  activeUsers: []
+  activeUsers: [],
+  isFetching: false
 }
 
 const todoReducer = (state: any = initialState, action: any) => {
@@ -47,26 +50,20 @@ export default todoReducer
 
 const updateTodos = (todos: object) => ({type: UPDATE_TODOS, todos})
 const toggleError = (isError: boolean) => ({type: TOGGLE_ERROR, isError})
+const toggleIsFetching = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleActiveUser = (userId: number) => ({type: TOGGLE_ACTIVE_USER, userId})
 export const toggleCompleted = (userId: number, todoId: number) => ({type: TOGGLE_COMPLETED, userId, todoId})
 
 export const setTodos = () => async (dispatch: any) => {
-  const detailisList = {
-    fetching: 'fetching',
-    updatingStore: 'updateing store',
-    updatingUi: 'updating ui',
-    error: 'error, data not found'
-  }
-  dispatch(updateDetails(detailisList.fetching))
+  dispatch(toggleIsFetching(true))
   try {
     const response = await getTodos()
-    dispatch(updateDetails(detailisList.updatingStore))
     dispatch(toggleError(false))
-    dispatch(updateDetails(detailisList.updatingUi))
     dispatch(updateTodos(response))
+    dispatch(toggleIsFetching(false))
   } catch (e: any) {
-    dispatch(updateDetails(detailisList.error))
     dispatch (toggleError(true))
+    dispatch(toggleIsFetching(false))
   }
   
 }
